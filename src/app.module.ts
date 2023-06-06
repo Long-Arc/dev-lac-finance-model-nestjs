@@ -29,10 +29,10 @@ import { PowerBIReportModule } from './powerBIReports/powerBIReport.module';
       // options: { encrypt: false },
 
       type: 'mssql',
-      host: 'lacprodsql.database.windows.net',
+      host: 'lacdevsql.database.windows.net',
       port: 1433,
       username: 'LACFinance',
-      password: '1H5ajj14',
+      password: 'Test@1234',
       database: 'LACFinance',
       synchronize: false,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
