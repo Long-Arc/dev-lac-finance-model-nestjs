@@ -20,4 +20,22 @@ export class UsersService {
     });
     return user;
   }
+
+  async createUser(
+    user: Userdetails,
+  ): Promise<Userdetails> 
+  {
+    const cashFlowDetail = this.usersRepository.create({
+      ...user,
+    });
+    return await this.usersRepository.save(cashFlowDetail);
+  }
+
+  async updatePassword(
+    email: string,
+    Userdetails: Userdetails,
+  ): Promise<any> {
+    await this.usersRepository.update(email, Userdetails);
+    return await this.getUserByUserName(email); //this.cashFlowRepository.save(cashFlowDetail);
+  }
 }

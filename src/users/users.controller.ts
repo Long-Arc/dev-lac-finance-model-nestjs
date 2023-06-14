@@ -1,6 +1,7 @@
-import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UsersService } from './users.service';
+import { Userdetails } from 'src/entities/users.entity';
 
 @Controller('users')
 export class UsersController {
@@ -15,5 +16,18 @@ export class UsersController {
   @Get('getUserByUserName')
   getUserByUserName(@Query('userName') userName: string) {
     return this.usersService.getUserByUserName(userName);
+  }
+
+  @Post('createUser')
+  createCashFlow(@Body() user: Userdetails) {
+    return this.usersService.createUser(user);
+  }
+
+  @Put('updatePassword/:email')
+  updateCashFlow(
+    @Param('email') email : string,
+    @Body() Userdetails: Userdetails,
+  ) {
+    return this.usersService.updatePassword(email, Userdetails);
   }
 }
