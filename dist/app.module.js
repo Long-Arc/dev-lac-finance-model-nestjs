@@ -19,6 +19,7 @@ const shareClass_module_1 = require("./shareClass/shareClass.module");
 const users_module_1 = require("./users/users.module");
 const config_1 = require("@nestjs/config");
 const powerBIReport_module_1 = require("./powerBIReports/powerBIReport.module");
+const cashFlowHistory_module_1 = require("./cashFlowHistory/cashFlowHistory.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -45,7 +46,8 @@ AppModule = __decorate([
             portfolioCompanyDetails_module_1.PortCoDetailsModule,
             shareClass_module_1.ShareClassModule,
             cashFlow_module_1.CashFlowModule,
-            powerBIReport_module_1.PowerBIReportModule
+            powerBIReport_module_1.PowerBIReportModule,
+            cashFlowHistory_module_1.CashFlowHistoryModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

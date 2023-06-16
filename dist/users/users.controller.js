@@ -16,6 +16,7 @@ exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const passport_1 = require("@nestjs/passport");
 const users_service_1 = require("./users.service");
+const users_entity_1 = require("../entities/users.entity");
 let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
@@ -25,6 +26,12 @@ let UsersController = class UsersController {
     }
     getUserByUserName(userName) {
         return this.usersService.getUserByUserName(userName);
+    }
+    createCashFlow(user) {
+        return this.usersService.createUser(user);
+    }
+    updateCashFlow(email, Userdetails) {
+        return this.usersService.updatePassword(email, Userdetails);
     }
 };
 __decorate([
@@ -41,6 +48,21 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getUserByUserName", null);
+__decorate([
+    (0, common_1.Post)('createUser'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [users_entity_1.Userdetails]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "createCashFlow", null);
+__decorate([
+    (0, common_1.Put)('updatePassword/:email'),
+    __param(0, (0, common_1.Param)('email')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, users_entity_1.Userdetails]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "updateCashFlow", null);
 UsersController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [users_service_1.UsersService])

@@ -5,4 +5,6 @@ export declare class UsersService {
     constructor(usersRepository: Repository<Userdetails>);
     findAll(): Promise<Userdetails[]>;
     getUserByUserName(userName: string): Promise<Userdetails>;
+    createUser(user: Userdetails): Promise<Userdetails>;
+    updatePassword(email: string, Userdetails: Userdetails): Promise<any>;
 }

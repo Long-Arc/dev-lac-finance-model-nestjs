@@ -31,7 +31,7 @@ let CashFlowService = class CashFlowService {
     }
     async findAll() {
         const cashFlowDetails = await this.cashFlowRepository.find({
-            order: { ModifiedDate: { direction: 'ASC' } },
+            order: { ModifiedDate: { direction: 'DESC' } },
         });
         const fundTypes = await this.fundTypesRepository.find();
         const portfolios = await this.portCoDetailsRepository.find();

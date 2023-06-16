@@ -30,6 +30,14 @@ let UsersService = class UsersService {
         });
         return user;
     }
+    async createUser(user) {
+        const cashFlowDetail = this.usersRepository.create(Object.assign({}, user));
+        return await this.usersRepository.save(cashFlowDetail);
+    }
+    async updatePassword(email, Userdetails) {
+        await this.usersRepository.update(email, Userdetails);
+        return await this.getUserByUserName(email);
+    }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)(),
