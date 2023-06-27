@@ -5,6 +5,6 @@ export declare class UsersController {
     constructor(usersService: UsersService);
     getAll(): Promise<Userdetails[]>;
     getUserByUserName(userName: string): Promise<Userdetails>;
-    createCashFlow(user: Userdetails): Promise<Userdetails>;
-    updateCashFlow(email: string, Userdetails: Userdetails): Promise<any>;
+    createUser(user: Userdetails): Promise<Userdetails>;
+    updatePassword(email: string, Userdetails: Userdetails): Promise<any>;
 }

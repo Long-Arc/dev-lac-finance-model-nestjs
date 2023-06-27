@@ -14,7 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
-const passport_1 = require("@nestjs/passport");
 const users_service_1 = require("./users.service");
 const users_entity_1 = require("../entities/users.entity");
 let UsersController = class UsersController {
@@ -27,15 +26,14 @@ let UsersController = class UsersController {
     getUserByUserName(userName) {
         return this.usersService.getUserByUserName(userName);
     }
-    createCashFlow(user) {
+    createUser(user) {
         return this.usersService.createUser(user);
     }
-    updateCashFlow(email, Userdetails) {
+    updatePassword(email, Userdetails) {
         return this.usersService.updatePassword(email, Userdetails);
     }
 };
 __decorate([
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
@@ -54,7 +52,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [users_entity_1.Userdetails]),
     __metadata("design:returntype", void 0)
-], UsersController.prototype, "createCashFlow", null);
+], UsersController.prototype, "createUser", null);
 __decorate([
     (0, common_1.Put)('updatePassword/:email'),
     __param(0, (0, common_1.Param)('email')),
@@ -62,7 +60,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, users_entity_1.Userdetails]),
     __metadata("design:returntype", void 0)
-], UsersController.prototype, "updateCashFlow", null);
+], UsersController.prototype, "updatePassword", null);
 UsersController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [users_service_1.UsersService])

@@ -31,8 +31,8 @@ let UsersService = class UsersService {
         return user;
     }
     async createUser(user) {
-        const cashFlowDetail = this.usersRepository.create(Object.assign({}, user));
-        return await this.usersRepository.save(cashFlowDetail);
+        const userDetail = this.usersRepository.create(Object.assign({}, user));
+        return await this.usersRepository.save(userDetail);
     }
     async updatePassword(email, Userdetails) {
         await this.usersRepository.update(email, Userdetails);

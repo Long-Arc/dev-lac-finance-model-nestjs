@@ -7,7 +7,7 @@ import { Userdetails } from 'src/entities/users.entity';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @UseGuards(AuthGuard('jwt'))
+  //@UseGuards(AuthGuard('jwt'))
   @Get()
   getAll() {
     return this.usersService.findAll();
@@ -19,12 +19,12 @@ export class UsersController {
   }
 
   @Post('createUser')
-  createCashFlow(@Body() user: Userdetails) {
+  createUser(@Body() user: Userdetails) {
     return this.usersService.createUser(user);
   }
 
   @Put('updatePassword/:email')
-  updateCashFlow(
+  updatePassword(
     @Param('email') email : string,
     @Body() Userdetails: Userdetails,
   ) {

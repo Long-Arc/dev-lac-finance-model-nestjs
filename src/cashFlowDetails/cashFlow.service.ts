@@ -180,6 +180,7 @@ export class CashFlowService {
           queryResult = res;
         })
         .catch((exception) => {
+          console.log(exception);
           throw exception;
         });
     }

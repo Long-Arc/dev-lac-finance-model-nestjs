@@ -25,10 +25,10 @@ export class UsersService {
     user: Userdetails,
   ): Promise<Userdetails> 
   {
-    const cashFlowDetail = this.usersRepository.create({
+    const userDetail = this.usersRepository.create({
       ...user,
     });
-    return await this.usersRepository.save(cashFlowDetail);
+    return await this.usersRepository.save(userDetail);
   }
 
   async updatePassword(
