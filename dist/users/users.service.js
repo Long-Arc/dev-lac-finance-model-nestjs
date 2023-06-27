@@ -35,6 +35,8 @@ let UsersService = class UsersService {
         return await this.usersRepository.save(userDetail);
     }
     async updatePassword(email, Userdetails) {
+        console.log(email);
+        console.log(Userdetails);
         await this.usersRepository.update(email, Userdetails);
         return await this.getUserByUserName(email);
     }

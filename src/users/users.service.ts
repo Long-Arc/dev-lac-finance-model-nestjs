@@ -35,6 +35,8 @@ export class UsersService {
     email: string,
     Userdetails: Userdetails,
   ): Promise<any> {
+    console.log(email)
+    console.log(Userdetails)
     await this.usersRepository.update(email, Userdetails);
     return await this.getUserByUserName(email); //this.cashFlowRepository.save(cashFlowDetail);
   }
