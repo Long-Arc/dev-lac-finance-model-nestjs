@@ -20,4 +20,24 @@ export class UsersService {
     });
     return user;
   }
+
+  async createUser(
+    user: Userdetails,
+  ): Promise<Userdetails> 
+  {
+    const userDetail = this.usersRepository.create({
+      ...user,
+    });
+    return await this.usersRepository.save(userDetail);
+  }
+
+  async updatePassword(
+    email: string,
+    Userdetails: Userdetails,
+  ): Promise<any> {
+    console.log(email)
+    console.log(Userdetails)
+    await this.usersRepository.update(email, Userdetails);
+    return await this.getUserByUserName(email); //this.cashFlowRepository.save(cashFlowDetail);
+  }
 }

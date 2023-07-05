@@ -10,6 +10,7 @@ import { ShareClassModule } from './shareClass/shareClass.module';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config'
 import { PowerBIReportModule } from './powerBIReports/powerBIReport.module';
+import { CashFlowHistoryModule } from './cashFlowHistory/cashFlowHistory.module';
 
 @Module({
   imports: [
@@ -44,7 +45,8 @@ import { PowerBIReportModule } from './powerBIReports/powerBIReport.module';
     PortCoDetailsModule,
     ShareClassModule,
     CashFlowModule,
-    PowerBIReportModule
+    PowerBIReportModule,
+    CashFlowHistoryModule
   ],
   controllers: [AppController],
   providers: [AppService],

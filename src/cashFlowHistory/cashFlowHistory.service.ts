@@ -8,10 +8,13 @@ import { Dimportcodetails } from 'src/entities/portfolioCompanyDetails.entity';
 import { Dimshareclass } from 'src/entities/shareClass.entity';
 import { Between, Repository, MoreThan, LessThan } from 'typeorm';
 import { SearchCashFlowDetailsEntity } from 'src/entities/searchCashFlowDetails.entity';
+import { Factcashflowdetailshistory } from 'src/entities/cashFlowHistory.entity';
 
 @Injectable()
-export class CashFlowService {
+export class CashFlowHistoryService {
   constructor(
+    @InjectRepository(Factcashflowdetailshistory)
+    private readonly cashFlowHistoryRepository: Repository<Factcashflowdetailshistory>,
     @InjectRepository(Factcashflowdetails)
     private readonly cashFlowRepository: Repository<Factcashflowdetails>,
     @InjectRepository(Dimfundtypes)
@@ -26,7 +29,7 @@ export class CashFlowService {
 
   //Get all cashflow details
   async findAll() {
-    const cashFlowDetails = await this.cashFlowRepository.find({
+    const cashFlowHistory = await this.cashFlowHistoryRepository.find({
       order: { ModifiedDate: { direction: 'DESC' } },
     });
     const fundTypes = await this.fundTypesRepository.find();
@@ -34,7 +37,7 @@ export class CashFlowService {
     const shareClasses = await this.shareClassRepository.find();
 
     // //Need to come up with better approach
-    const cashFlowDetailsDTO: CashFlowDTO[] = cashFlowDetails.map((x) => {
+    const cashFlowDTO: CashFlowDTO[] = cashFlowHistory.map((x) => {
       return {
         ...x,
         FundType: fundTypes.find((f) => f.FundId === x.FundId).FundType,
@@ -45,27 +48,27 @@ export class CashFlowService {
         Date: new Date(x.Date.getTime() + 330 * 60000),
       };
     });
-    return cashFlowDetailsDTO;
+    return cashFlowDTO;
   }
 
   //Get Cashflow detail by record id
-  async getCashFlowDetailsByRecordId(
+  async getCashFlowHistoryByRecordId(
     recordId: number,
   ): Promise<Factcashflowdetails> {
-    const cashFlowDetails = await this.cashFlowRepository.findOne({
+    const cashFlowHistory = await this.cashFlowHistoryRepository.findOne({
       where: { RecordId: recordId },
     });
-    return cashFlowDetails;
+    return cashFlowHistory;
   }
 
   //Create a new Cashflow
   async createCashFlowDetail(
     cashFlow: Factcashflowdetails,
   ): Promise<Factcashflowdetails> {
-    const cashFlowDetail = this.cashFlowRepository.create({
+    const cashFlowHistory = this.cashFlowHistoryRepository.create({
       ...cashFlow,
     });
-    return await this.cashFlowRepository.save(cashFlowDetail);
+    return await this.cashFlowHistoryRepository.save(cashFlowHistory);
   }
 
   //Bulk Upload Cashflow
@@ -119,7 +122,7 @@ export class CashFlowService {
             VersionId: 1,
           });
         });
-        await this.cashFlowRepository.save(cashFlowDetails, {
+        await this.cashFlowHistoryRepository.save(cashFlowDetails, {
           chunk: 150,
         });
         response.severity = 'success';
@@ -153,13 +156,13 @@ export class CashFlowService {
     id: number,
     cashFlow: Factcashflowdetails,
   ): Promise<any> {
-    await this.cashFlowRepository.update(id, cashFlow);
-    return await this.getCashFlowDetailsByRecordId(id); //this.cashFlowRepository.save(cashFlowDetail);
+    await this.cashFlowHistoryRepository.update(id, cashFlow);
+    return await this.getCashFlowHistoryByRecordId(id); //this.cashFlowRepository.save(cashFlowDetail);
   }
 
   //Delete a cashflow
   async deleteCashFlowDetail(id: number): Promise<any> {
-    return this.cashFlowRepository.delete(id);
+    return this.cashFlowHistoryRepository.delete(id);
   }
 
   //search cashflow
@@ -180,7 +183,6 @@ export class CashFlowService {
           queryResult = res;
         })
         .catch((exception) => {
-          console.log(exception);
           throw exception;
         });
     }
@@ -188,8 +190,8 @@ export class CashFlowService {
   }
 
   async getYears(): Promise<any> {
-    return this.cashFlowRepository
-      .query(`SELECT DISTINCT(YEAR(Date)) Year FROM factCashFlowDetails
+    return this.cashFlowHistoryRepository
+      .query(`SELECT DISTINCT(YEAR(Date)) Year FROM factCashFlowHistory
     ORDER BY YEAR(Date) DESC`);
   }
 }
