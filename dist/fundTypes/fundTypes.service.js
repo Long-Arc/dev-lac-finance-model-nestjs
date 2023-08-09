@@ -24,6 +24,10 @@ let FundTypesService = class FundTypesService {
     findAll() {
         return this.FundTypesRepository.find();
     }
+    async createFund(fund) {
+        const fundDetail = this.FundTypesRepository.create(Object.assign({}, fund));
+        return await this.FundTypesRepository.save(fundDetail);
+    }
     async getFundTypeByFundId(fundId) {
         const fundType = await this.FundTypesRepository.findOne({
             where: { FundId: fundId },

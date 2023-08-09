@@ -7,4 +7,5 @@ export declare class Userdetails {
     EmailId: string;
     Active: boolean;
     DateModified: Date;
+    RoleID: number;
 }

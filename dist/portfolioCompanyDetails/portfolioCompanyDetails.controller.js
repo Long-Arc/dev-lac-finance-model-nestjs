@@ -16,12 +16,16 @@ exports.PortCoDetailsController = void 0;
 const common_1 = require("@nestjs/common");
 const passport_1 = require("@nestjs/passport");
 const portfolioCompanyDetails_service_1 = require("./portfolioCompanyDetails.service");
+const portfolioCompanyDetails_entity_1 = require("../entities/portfolioCompanyDetails.entity");
 let PortCoDetailsController = class PortCoDetailsController {
     constructor(portCoDetailsService) {
         this.portCoDetailsService = portCoDetailsService;
     }
     getAll() {
         return this.portCoDetailsService.findAll();
+    }
+    createPortCo(portCo) {
+        return this.portCoDetailsService.createPortCo(portCo);
     }
     getPortCoDetailsById(portCoId) {
         return this.portCoDetailsService.getPortCoDetailsById(portCoId);
@@ -34,6 +38,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], PortCoDetailsController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Post)('createPortCo'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [portfolioCompanyDetails_entity_1.Dimportcodetails]),
+    __metadata("design:returntype", void 0)
+], PortCoDetailsController.prototype, "createPortCo", null);
 __decorate([
     (0, common_1.Get)('getPortCoDetailsById'),
     __param(0, (0, common_1.Query)('portCoId')),

@@ -5,5 +5,5 @@ export declare class ShareClassService {
     constructor(shareClassRepository: Repository<Dimshareclass>);
     findAll(): Promise<Dimshareclass[]>;
     getShareClassById(shareClassId: number): Promise<Dimshareclass>;
-    createShareClass(shareClass: Dimshareclass): Promise<Dimshareclass>;
+    createShareClass(shareclass: Dimshareclass): Promise<Dimshareclass>;
 }

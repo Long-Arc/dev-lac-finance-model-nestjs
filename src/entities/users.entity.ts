@@ -25,4 +25,7 @@ export class Userdetails {
 
   @Column()
   DateModified: Date;
+
+  @Column()
+  RoleID: number
 }

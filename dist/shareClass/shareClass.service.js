@@ -30,9 +30,9 @@ let ShareClassService = class ShareClassService {
         });
         return shareClass;
     }
-    createShareClass(shareClass) {
-        const cashFlowDetail = this.shareClassRepository.create(Object.assign({}, shareClass));
-        return this.shareClassRepository.save(cashFlowDetail);
+    async createShareClass(shareclass) {
+        const shareclassdetail = this.shareClassRepository.create(Object.assign({}, shareclass));
+        return await this.shareClassRepository.save(shareclassdetail);
     }
 };
 ShareClassService = __decorate([

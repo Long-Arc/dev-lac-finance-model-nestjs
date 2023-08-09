@@ -14,6 +14,16 @@ export class PortCoDetailsService {
     return this.PortCoDetailsRepository.find();
   }
 
+  async createPortCo(
+    portCo: Dimportcodetails,
+  ): Promise<Dimportcodetails> 
+  {
+    const portcodetail = this.PortCoDetailsRepository.create({
+      ...portCo,
+    });
+    return await this.PortCoDetailsRepository.save(portcodetail);
+  }
+
   async getPortCoDetailsById(portCoId: number): Promise<Dimportcodetails> {
     const PortCoDetails = await this.PortCoDetailsRepository.findOne({
       where: { PortCoId: portCoId },

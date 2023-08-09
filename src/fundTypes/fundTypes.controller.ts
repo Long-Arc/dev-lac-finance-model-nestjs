@@ -1,6 +1,8 @@
-import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FundTypesService } from './fundTypes.service';
+import { Dimfundtypes } from 'src/entities/fundTypes.entity';
+
 
 @Controller('fundTypes')
 export class FundTypesController {
@@ -10,6 +12,11 @@ export class FundTypesController {
   @Get()
   getAll() {
     return this.fundTypesService.findAll();
+  }
+
+  @Post('createFund')
+  createFund(@Body() user: Dimfundtypes) {
+    return this.fundTypesService.createFund(user);
   }
 
   @Get('getFundTypeByFundId')

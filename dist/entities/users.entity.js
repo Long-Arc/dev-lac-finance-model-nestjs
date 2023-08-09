@@ -45,6 +45,10 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Date)
 ], Userdetails.prototype, "DateModified", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Userdetails.prototype, "RoleID", void 0);
 Userdetails = __decorate([
     (0, typeorm_1.Entity)()
 ], Userdetails);

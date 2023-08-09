@@ -16,12 +16,16 @@ exports.FundTypesController = void 0;
 const common_1 = require("@nestjs/common");
 const passport_1 = require("@nestjs/passport");
 const fundTypes_service_1 = require("./fundTypes.service");
+const fundTypes_entity_1 = require("../entities/fundTypes.entity");
 let FundTypesController = class FundTypesController {
     constructor(fundTypesService) {
         this.fundTypesService = fundTypesService;
     }
     getAll() {
         return this.fundTypesService.findAll();
+    }
+    createFund(user) {
+        return this.fundTypesService.createFund(user);
     }
     getFundTypeByFundId(fundId) {
         return this.fundTypesService.getFundTypeByFundId(fundId);
@@ -34,6 +38,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], FundTypesController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Post)('createFund'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [fundTypes_entity_1.Dimfundtypes]),
+    __metadata("design:returntype", void 0)
+], FundTypesController.prototype, "createFund", null);
 __decorate([
     (0, common_1.Get)('getFundTypeByFundId'),
     __param(0, (0, common_1.Query)('fundId')),
