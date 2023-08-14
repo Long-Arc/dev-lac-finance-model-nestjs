@@ -55,7 +55,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUser", null);
 __decorate([
-    (0, common_1.Put)('updatePassword/email'),
+    (0, common_1.Put)('updatePassword/:email'),
     __param(0, (0, common_1.Param)('email')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

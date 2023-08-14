@@ -24,6 +24,10 @@ let PortCoDetailsService = class PortCoDetailsService {
     findAll() {
         return this.PortCoDetailsRepository.find();
     }
+    async createPortCo(portCo) {
+        const portcodetail = this.PortCoDetailsRepository.create(Object.assign({}, portCo));
+        return await this.PortCoDetailsRepository.save(portcodetail);
+    }
     async getPortCoDetailsById(portCoId) {
         const PortCoDetails = await this.PortCoDetailsRepository.findOne({
             where: { PortCoId: portCoId },

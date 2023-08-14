@@ -27,8 +27,8 @@ let ShareClassController = class ShareClassController {
     getShareClassById(shareClassId) {
         return this.shareClassService.getShareClassById(shareClassId);
     }
-    createCashFlow(shareClass) {
-        return this.shareClassService.createShareClass(shareClass);
+    createShareClass(shareclass) {
+        return this.shareClassService.createShareClass(shareclass);
     }
 };
 __decorate([
@@ -46,12 +46,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ShareClassController.prototype, "getShareClassById", null);
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('createShareClass'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [shareClass_entity_1.Dimshareclass]),
     __metadata("design:returntype", void 0)
-], ShareClassController.prototype, "createCashFlow", null);
+], ShareClassController.prototype, "createShareClass", null);
 ShareClassController = __decorate([
     (0, common_1.Controller)('shareClass'),
     __metadata("design:paramtypes", [shareClass_service_1.ShareClassService])

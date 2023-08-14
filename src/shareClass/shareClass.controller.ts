@@ -18,9 +18,9 @@ export class ShareClassController {
     return this.shareClassService.getShareClassById(shareClassId);
   }
 
-  @Post()
-  createCashFlow(@Body() shareClass: Dimshareclass) {
-    //console.log(shareClass);
-    return this.shareClassService.createShareClass(shareClass);
+  @Post('createShareClass')
+  createShareClass(@Body() shareclass: Dimshareclass) {
+    return this.shareClassService.createShareClass(shareclass);
   }
+
 }

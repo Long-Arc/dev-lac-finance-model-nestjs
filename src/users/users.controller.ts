@@ -23,7 +23,7 @@ export class UsersController {
     return this.usersService.createUser(user);
   }
 
-  @Put('updatePassword/email')
+  @Put('updatePassword/:email')
   updatePassword(
     @Param('email') email : string,
     @Body() Userdetails: Userdetails,

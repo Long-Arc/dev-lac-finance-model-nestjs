@@ -20,10 +20,13 @@ export class ShareClassService {
     return shareClass;
   }
 
-  createShareClass(shareClass: Dimshareclass): Promise<Dimshareclass> {
-    const cashFlowDetail = this.shareClassRepository.create({
-      ...shareClass,
+  async createShareClass(
+    shareclass: Dimshareclass,
+  ): Promise<Dimshareclass> 
+  {
+    const shareclassdetail = this.shareClassRepository.create({
+      ...shareclass,
     });
-    return this.shareClassRepository.save(cashFlowDetail);
+    return await this.shareClassRepository.save(shareclassdetail);
   }
 }

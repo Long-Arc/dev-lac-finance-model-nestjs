@@ -4,5 +4,6 @@ export declare class FundTypesService {
     private readonly FundTypesRepository;
     constructor(FundTypesRepository: Repository<Dimfundtypes>);
     findAll(): Promise<Dimfundtypes[]>;
+    createFund(fund: Dimfundtypes): Promise<Dimfundtypes>;
     getFundTypeByFundId(fundId: number): Promise<Dimfundtypes>;
 }

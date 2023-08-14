@@ -14,6 +14,16 @@ export class FundTypesService {
     return this.FundTypesRepository.find();
   }
 
+  async createFund(
+    fund: Dimfundtypes,
+  ): Promise<Dimfundtypes> 
+  {
+    const fundDetail = this.FundTypesRepository.create({
+      ...fund,
+    });
+    return await this.FundTypesRepository.save(fundDetail);
+  }
+
   async getFundTypeByFundId(fundId: number): Promise<Dimfundtypes> {
     const fundType = await this.FundTypesRepository.findOne({
       where: { FundId: fundId },

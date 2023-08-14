@@ -5,5 +5,5 @@ export declare class ShareClassController {
     constructor(shareClassService: ShareClassService);
     getAll(): Promise<Dimshareclass[]>;
     getShareClassById(shareClassId: number): Promise<Dimshareclass>;
-    createCashFlow(shareClass: Dimshareclass): Promise<Dimshareclass>;
+    createShareClass(shareclass: Dimshareclass): Promise<Dimshareclass>;
 }
