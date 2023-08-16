@@ -11,6 +11,7 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config'
 import { PowerBIReportModule } from './powerBIReports/powerBIReport.module';
 import { CashFlowHistoryModule } from './cashFlowHistory/cashFlowHistory.module';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -46,7 +47,8 @@ import { CashFlowHistoryModule } from './cashFlowHistory/cashFlowHistory.module'
     ShareClassModule,
     CashFlowModule,
     PowerBIReportModule,
-    CashFlowHistoryModule
+    CashFlowHistoryModule,
+    EmailModule
   ],
   controllers: [AppController],
   providers: [AppService],
