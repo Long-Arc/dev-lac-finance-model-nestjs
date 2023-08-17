@@ -12,9 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmailService = void 0;
 const common_1 = require("@nestjs/common");
 const sgMail = require("@sendgrid/mail");
+require('dotenv').config();
+const apikey = process.env.API_KEY;
 let EmailService = class EmailService {
     constructor() {
-        sgMail.setApiKey('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');
+        sgMail.setApiKey(apikey);
     }
     async sendEmail(to, subject, text, html) {
         const message = {

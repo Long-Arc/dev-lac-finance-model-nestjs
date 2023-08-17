@@ -1,10 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import * as sgMail from '@sendgrid/mail';
+import { config } from 'process';
+
+require('dotenv').config();
+const apikey= process.env.API_KEY;
 
 @Injectable()
 export class EmailService {
   constructor() {
-    sgMail.setApiKey('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');
+    sgMail.setApiKey(apikey)
+      //'');
   }
 
   async sendEmail(to: string, subject: string, text: string, html: string): Promise<void> {
