@@ -44,6 +44,7 @@ export class CashFlowController {
     @Param('id') id: number,
     @Body() cashFlow: Factcashflowdetails,
   ) {
+    console.log("Createeeeeeeeeeeeeeeeeeeeee cashflow");
     return this.cashFlowService.updateCashFlowDetail(id, cashFlow);
   }
 

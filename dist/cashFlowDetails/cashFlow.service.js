@@ -125,7 +125,11 @@ let CashFlowService = class CashFlowService {
         }
     }
     async updateCashFlowDetail(id, cashFlow) {
+        console.log('Update');
+        console.log(id, cashFlow);
+        console.log("**************");
         await this.cashFlowRepository.update(id, cashFlow);
+        console.log('Update123');
         return await this.getCashFlowDetailsByRecordId(id);
     }
     async deleteCashFlowDetail(id) {

@@ -34,6 +34,7 @@ let CashFlowController = class CashFlowController {
         return this.cashFlowService.bulkUploadCashFlow(cashFlows);
     }
     updateCashFlow(id, cashFlow) {
+        console.log("Createeeeeeeeeeeeeeeeeeeeee cashflow");
         return this.cashFlowService.updateCashFlowDetail(id, cashFlow);
     }
     deleteCashFlow(id) {
